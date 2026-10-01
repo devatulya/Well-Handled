@@ -326,7 +326,9 @@ function ServicePage() {
                     Start on WhatsApp
                   </a>
                   <a
-                    href={`mailto:contact@wellhandled.in?subject=${encodeURIComponent(service.title)}`}
+                    href={gmailLink(service.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center border border-background/50 px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
                   >
                     contact@wellhandled.in
