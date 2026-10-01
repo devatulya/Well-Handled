@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import heroDesk from "@/assets/hero-desk.jpg";
 import { services } from "@/lib/services";
+import { gmailLink } from "@/lib/site";
 import { Reveal, RevealGroup, RisingText, fadeUp } from "@/components/reveal";
 
 export const Route = createFileRoute("/")({
@@ -236,7 +237,9 @@ function Index() {
                 Tell us what you're building.
               </h2>
               <a
-                href="mailto:contact@wellhandled.in"
+                href={gmailLink()}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-10 inline-block border border-foreground px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
               >
                 contact@wellhandled.in

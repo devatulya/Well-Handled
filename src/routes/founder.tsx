@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "motion/react";
 import srishAsset from "@/assets/srish.jpeg.asset.json";
-import { CALENDAR_LINK, WHATSAPP_NUMBER } from "@/lib/site";
+import { CALENDAR_LINK, WHATSAPP_NUMBER, gmailLink } from "@/lib/site";
 import { trackCalendarClick } from "@/lib/analytics";
 
 function DecisionRow() {
@@ -209,7 +209,9 @@ function Founder() {
                   WhatsApp +91 95112 02129
                 </a>
                 <a
-                  href="mailto:contact@wellhandled.in"
+                  href={gmailLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center border border-foreground px-7 py-3.5 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
                 >
                   contact@wellhandled.in

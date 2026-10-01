@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { canonicalServiceSlug, serviceBySlug, services } from "@/lib/services";
-import { CALENDAR_LINK } from "@/lib/site";
+import { CALENDAR_LINK, gmailLink } from "@/lib/site";
 import { Reveal, RevealGroup, RisingText, fadeUp, pageTransition } from "@/components/reveal";
 import { LeadForm } from "@/components/lead-form";
 import { trackCalendarClick, trackWhatsAppClick } from "@/lib/analytics";
@@ -326,7 +326,9 @@ function ServicePage() {
                     Start on WhatsApp
                   </a>
                   <a
-                    href={`mailto:contact@wellhandled.in?subject=${encodeURIComponent(service.title)}`}
+                    href={gmailLink(service.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center justify-center border border-background/50 px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
                   >
                     contact@wellhandled.in
