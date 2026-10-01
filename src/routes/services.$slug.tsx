@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { canonicalServiceSlug, serviceBySlug, services } from "@/lib/services";
-import { CALENDAR_LINK } from "@/lib/site";
+import { CALENDAR_LINK, gmailLink } from "@/lib/site";
 import { Reveal, RevealGroup, RisingText, fadeUp, pageTransition } from "@/components/reveal";
 import { LeadForm } from "@/components/lead-form";
 import { trackCalendarClick, trackWhatsAppClick } from "@/lib/analytics";

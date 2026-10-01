@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "motion/react";
 import srishAsset from "@/assets/srish.jpeg.asset.json";
-import { CALENDAR_LINK, WHATSAPP_NUMBER } from "@/lib/site";
+import { CALENDAR_LINK, WHATSAPP_NUMBER, gmailLink } from "@/lib/site";
 import { trackCalendarClick } from "@/lib/analytics";
 
 function DecisionRow() {

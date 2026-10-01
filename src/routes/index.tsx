@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import heroDesk from "@/assets/hero-desk.jpg";
 import { services } from "@/lib/services";
+import { gmailLink } from "@/lib/site";
 import { Reveal, RevealGroup, RisingText, fadeUp } from "@/components/reveal";
 
 export const Route = createFileRoute("/")({
