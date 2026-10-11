@@ -5,6 +5,7 @@ import heroDesk from "@/assets/hero-desk.jpg";
 import { services } from "@/lib/services";
 import { gmailLink } from "@/lib/site";
 import { Reveal, RevealGroup, RisingText, fadeUp } from "@/components/reveal";
+import { LeadForm } from "@/components/lead-form";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -230,20 +231,30 @@ function Index() {
 
         {/* Contact */}
         <section id="contact" className="border-t border-border">
-          <div className="mx-auto max-w-6xl px-5 py-20 text-center sm:px-8 sm:py-28">
+          <div className="mx-auto max-w-4xl px-5 py-20 sm:px-8 sm:py-28">
             <Reveal>
-              <p className="eyebrow">Now taking a small number of brands</p>
-              <h2 className="mx-auto mt-6 max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">
-                Tell us what you're building.
-              </h2>
-              <a
-                href={gmailLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-10 inline-block border border-foreground px-8 py-4 text-xs uppercase tracking-[0.2em] transition-colors hover:bg-foreground hover:text-background"
-              >
-                contact@wellhandled.in
-              </a>
+              <div className="text-center">
+                <p className="eyebrow">Now taking a small number of brands</p>
+                <h2 className="mx-auto mt-6 max-w-3xl font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl">
+                  Tell us what you're building.
+                </h2>
+                <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-muted-foreground">
+                  Send a brief directly to our WhatsApp and we'll reply the same day. Or write to us at{" "}
+                  <a
+                    href={gmailLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-foreground"
+                  >
+                    contact@wellhandled.in
+                  </a>
+                  .
+                </p>
+              </div>
+
+              <div className="mt-12 text-left">
+                <LeadForm serviceTitle="General Enquiry" serviceSlug="general" />
+              </div>
             </Reveal>
           </div>
         </section>

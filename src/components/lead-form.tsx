@@ -42,6 +42,29 @@ const briefFields: Record<string, Field[]> = {
   "ai-automation": [
     { key: "workflow", label: "Explain the workflow automation in brief", type: "textarea", placeholder: "What happens today, which tools are involved, and what should happen automatically?" },
   ],
+  general: [
+    {
+      key: "serviceInterest",
+      label: "What service are you looking for?",
+      type: "select",
+      options: [
+        "Full Brand Management",
+        "Tech & Web Development",
+        "Personalised UGC",
+        "Brand Identity & Positioning",
+        "Video Editing & Design",
+        "Meta Ads & Performance",
+        "AI Automation",
+        "Other",
+      ],
+    },
+    {
+      key: "details",
+      label: "Tell us about your brand or goal",
+      type: "textarea",
+      placeholder: "What are you building, and what do you need handled?",
+    },
+  ],
 };
 
 const baseSchema = z.object({
@@ -160,7 +183,11 @@ export function LeadForm({ serviceTitle, serviceSlug }: { serviceTitle: string; 
     <div className="fade-in border border-border bg-card p-7 text-center sm:p-12">
       <span className="eyebrow">Enquiry sent</span>
       <h3 className="mt-4 font-display text-3xl font-medium italic tracking-tight sm:text-4xl">Thank you — it's with us now.</h3>
-      <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-muted-foreground">Your {serviceTitle} brief has been handed to our WhatsApp. We reply the same working day.</p>
+      <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-muted-foreground">
+        {serviceSlug === "general"
+          ? "Your enquiry has been handed to our WhatsApp. We reply the same working day."
+          : `Your ${serviceTitle} brief has been handed to our WhatsApp. We reply the same working day.`}
+      </p>
       <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
         <a href={lastLink.current} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick(serviceTitle, "thank_you_reopen")} className="inline-flex items-center justify-center bg-agree px-8 py-4 text-xs uppercase tracking-[0.2em] text-agree-foreground">Open WhatsApp again</a>
         <button type="button" onClick={() => { setValues(initialValues); setErrors({}); honeypot.current = ""; mountedAt.current = Date.now(); setSent(false); }} className="inline-flex items-center justify-center border border-foreground px-8 py-4 text-xs uppercase tracking-[0.2em] hover:bg-foreground hover:text-background">Send another brief</button>
@@ -171,7 +198,9 @@ export function LeadForm({ serviceTitle, serviceSlug }: { serviceTitle: string; 
   return (
     <form onSubmit={onSubmit} className="border border-border bg-card p-7 sm:p-10" noValidate>
       <span className="eyebrow">Tell us what you need</span>
-      <h3 className="mt-3 font-display text-3xl font-medium italic tracking-tight sm:text-4xl">Send your {serviceTitle} brief</h3>
+      <h3 className="mt-3 font-display text-3xl font-medium italic tracking-tight sm:text-4xl">
+        {serviceSlug === "general" ? "Send your brief" : `Send your ${serviceTitle} brief`}
+      </h3>
       <p className="mt-3 max-w-md font-sans text-sm leading-relaxed text-muted-foreground">Complete the brief and it lands in our WhatsApp, ready for a useful first conversation.</p>
       <div aria-hidden="true" className="absolute h-0 w-0 overflow-hidden opacity-0"><label>Company website<input type="text" tabIndex={-1} autoComplete="off" onChange={(event) => { honeypot.current = event.target.value; }} /></label></div>
 
