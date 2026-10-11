@@ -184,12 +184,28 @@
   border: 1px solid var(--border);
   padding: 1.75rem;
   transition:
-    background-color 0.35s ease,
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    background-color 0.3s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+
+  /* Hitbox extension to prevent hover flickering when translateY(-4px) shifts the card away from the cursor */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: auto;
+    transition: bottom 0.2s ease;
+  }
 
   &:hover {
     background-color: color-mix(in oklab, var(--card) 60%, var(--secondary));
     transform: translateY(-4px);
+    z-index: 10;
+  }
+
+  &:hover::before {
+    bottom: -8px;
   }
 }
 

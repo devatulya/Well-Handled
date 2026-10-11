@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "motion/react";
-import srishAsset from "@/assets/srish.jpeg.asset.json";
+import srishImg from "@/assets/srish.jpg";
 import { CALENDAR_LINK, WHATSAPP_NUMBER, gmailLink } from "@/lib/site";
 import { trackCalendarClick } from "@/lib/analytics";
 
@@ -115,17 +115,17 @@ function Founder() {
       <main>
         <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
           <div className="grid gap-12 md:grid-cols-[1fr_1.25fr] md:items-start md:gap-16">
-            <div className="relative md:sticky md:top-24">
+            <div>
               <motion.div
-                initial={{ opacity: 0, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 16, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="neon-frame image-reveal w-full overflow-hidden bg-muted p-1.5"
+                className="neon-frame w-full overflow-hidden bg-muted p-1.5"
               >
                 <img
-                  src={srishAsset.url}
+                  src={srishImg}
                   alt="Srish, founder of Well Handled"
-                  className="block h-auto w-full object-contain"
+                  className="block aspect-[4/5] w-full object-cover object-[55%_30%]"
                 />
               </motion.div>
             </div>

@@ -170,18 +170,18 @@ function Index() {
               ))}
               <motion.article
                 variants={fadeUp}
-                className="bento-cell flex flex-col justify-between bg-foreground text-background"
+                className="bento-cell flex flex-col justify-between gap-6 bg-foreground text-background hover:bg-foreground md:col-span-3 md:flex-row md:items-center md:justify-between"
               >
-                <span className="eyebrow text-background/60">Included</span>
-                <div className="mt-8">
-                  <h3 className="font-display text-2xl tracking-tight sm:text-3xl">
+                <div>
+                  <span className="eyebrow text-background/60">Included in every service</span>
+                  <h3 className="mt-3 font-display text-2xl tracking-tight sm:text-3xl lg:text-4xl">
                     Weekly update &amp; feedback calls
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-background/70">
-                    Every week, a clear picture of what shipped, what's next and what we need from
-                    you.
-                  </p>
                 </div>
+                <p className="max-w-md text-sm leading-relaxed text-background/70 sm:text-base">
+                  Every week, a clear picture of what shipped, what's next and what we need from
+                  you.
+                </p>
               </motion.article>
             </RevealGroup>
           </div>
