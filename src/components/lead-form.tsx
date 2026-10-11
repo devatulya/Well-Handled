@@ -3,8 +3,7 @@ import { z } from "zod";
 import { checkRateLimit, recordSubmission, MIN_FILL_MS } from "@/lib/anti-spam";
 import { trackLeadSubmit, trackSpamBlocked, trackWhatsAppClick } from "@/lib/analytics";
 import { attributionSummary, getAttribution } from "@/lib/attribution";
-import { supabase } from "@/integrations/supabase/client";
-import { whatsappLink } from "@/lib/site";
+import { GOOGLE_SHEET_WEBHOOK_URL, whatsappLink } from "@/lib/site";
 
 type Field = {
   key: string;
@@ -129,15 +128,28 @@ export function LeadForm({ serviceTitle, serviceSlug }: { serviceTitle: string; 
     recordSubmission();
     trackLeadSubmit(serviceTitle);
     trackWhatsAppClick(serviceTitle, "lead_form");
-    void supabase.from("leads").insert({
-      service: serviceTitle,
-      name: (values["name"] ?? "").trim(),
-      email: (values["contact"] ?? "").trim(),
-      notes,
-      page,
-      campaign,
-      whatsapp_clicked_at: new Date().toISOString(),
-    });
+
+    if (GOOGLE_SHEET_WEBHOOK_URL) {
+      try {
+        fetch(GOOGLE_SHEET_WEBHOOK_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            timestamp: new Date().toISOString(),
+            service: serviceTitle,
+            name: (values["name"] ?? "").trim(),
+            contact: (values["contact"] ?? "").trim(),
+            notes,
+            page,
+            campaign,
+          }),
+        });
+      } catch (err) {
+        console.error("Failed to sync lead to Google Sheet:", err);
+      }
+    }
+
     window.open(link, "_blank", "noopener,noreferrer");
     setSent(true);
   };

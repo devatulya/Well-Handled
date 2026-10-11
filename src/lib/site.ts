@@ -2,6 +2,7 @@
 export const WHATSAPP_NUMBER = "919511202129";
 export const CONTACT_EMAIL = "contact@wellhandled.in";
 export const CALENDAR_LINK = "https://calendar.app.google/YGvR4W2VDJmZPqFJ9";
+export const GOOGLE_SHEET_WEBHOOK_URL = import.meta.env.VITE_GOOGLE_SHEET_URL || "";
 
 export function whatsappLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
